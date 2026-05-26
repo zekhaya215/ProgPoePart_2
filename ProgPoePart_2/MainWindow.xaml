@@ -1,0 +1,102 @@
+﻿<Window x:Class="ProgPoePart_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgPoePart_2"
+        mc:Ignorable="d"
+        Title="Cybersecurity Awareness Chatbot"
+        Height="700"
+        Width="1000"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#0D1B2A">
+
+    <Grid>
+
+        <!-- Title -->
+        <TextBlock Text="Cybersecurity Awareness Chatbot"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,10,0,0"
+                   VerticalAlignment="Top"/>
+
+        <!-- YOUR IMAGE (KEPT) -->
+        <Image HorizontalAlignment="Left"
+               Height="261"
+               Margin="30,70,0,0"
+               VerticalAlignment="Top"
+               Width="407"
+               Source="/suttlemedia-cyborg-8147987_1920 - Copy.jpg"/>
+
+        <!-- Chat display -->
+        <Border Background="White"
+                CornerRadius="10"
+                Margin="470,70,30,170">
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBox x:Name="ChatDisplay"
+                         IsReadOnly="True"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         FontSize="14"
+                         Background="White"
+                         BorderThickness="0"
+                         Padding="10"/>
+            </ScrollViewer>
+        </Border>
+
+        <!-- User input -->
+        <TextBox x:Name="UserInput"
+                 Height="45"
+                 Width="650"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Bottom"
+                 Margin="0,0,0,90"
+                 FontSize="16"
+                 Padding="10"
+                 Background="White"/>
+
+        <!-- Send button -->
+        <Button x:Name="SendButton"
+                Content="Send"
+                Width="120"
+                Height="45"
+                HorizontalAlignment="Left"
+                Margin="220,0,0,25"
+                VerticalAlignment="Bottom"
+                Background="#1B9AAA"
+                Foreground="White"
+                FontWeight="Bold"
+                Click="SendButton_Click"/>
+
+        <!-- Clear button -->
+        <Button x:Name="ClearButton"
+                Content="Clear Chat"
+                Width="120"
+                Height="45"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,25"
+                VerticalAlignment="Bottom"
+                Background="#E63946"
+                Foreground="White"
+                FontWeight="Bold"
+                Click="ClearButton_Click"/>
+
+        <!-- Exit button -->
+        <Button x:Name="ExitButton"
+                Content="Exit"
+                Width="120"
+                Height="45"
+                HorizontalAlignment="Right"
+                Margin="0,0,220,25"
+                VerticalAlignment="Bottom"
+                Background="#6C757D"
+                Foreground="White"
+                FontWeight="Bold"
+                Click="ExitButton_Click"/>
+
+    </Grid>
+</Window>
