@@ -14,7 +14,7 @@ namespace ProgPoePart_2
         private VoiceManager voiceManager;
 
         private string previousTopic = "";
-
+        
         public MainWindow()
         {
             InitializeComponent();
