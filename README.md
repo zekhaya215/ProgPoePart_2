@@ -106,14 +106,7 @@ MainWindow.xaml.cs (Logic)
 - Dictionary and List Collections
 - System.Media (Audio Playback)
 
- Audio Setup
-
-To enable voice features:
-- Create an `Audio` folder
-- Add `welcome.wav`
-- Set:
-  - Build Action → Content
-  - Copy to Output Directory → Copy Always
+ 
 
  Summary
 
