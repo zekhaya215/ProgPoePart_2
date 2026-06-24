@@ -8,7 +8,7 @@ namespace ProgPoePart_2.Services
         private List<QuizQuestion> questions;
 
         private int currentIndex;
-
+        
         private int score;
 
         public QuizManager()
