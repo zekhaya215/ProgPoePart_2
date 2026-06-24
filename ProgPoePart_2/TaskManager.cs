@@ -7,7 +7,7 @@ namespace ProgPoePart_2.Services
     {
         private TaskStorageHelper storage;
         private ActivityLogger logger;
-
+        
         public TaskManager(ActivityLogger activityLogger)
         {
             storage = new TaskStorageHelper();
