@@ -1,114 +1,362 @@
-Cybersecurity Awareness Chatbot
+Cybersecurity Awareness Chatbot – Part 3
 
-The Cybersecurity Awareness Chatbot is a WPF desktop application developed in C#.
-It is designed to educate users about cybersecurity threats through an interactive chat system. 
-The chatbot uses modular programming, where each class has a specific responsibility to ensure clean architecture and maintainability.
+ Project Overview
 
+The Cybersecurity Awareness Chatbot is a WPF desktop application developed in C#. It is designed to educate users about cybersecurity threats through an interactive chat system. The chatbot uses modular programming principles where each class has a specific responsibility, ensuring clean architecture, maintainability, and scalability.
 
-Project Structure and Class Explanations
+Part 3 extends the chatbot by introducing Natural Language Processing (NLP), task management, activity logging, a cybersecurity quiz system, user memory, and JSON data persistence.
 
- Models
-
+ Project Structure and Class Explanations
+Models
  UserMemory.cs
-This class is responsible for storing user-related information during the conversation.
-It holds data such as the user's name and favourite cybersecurity topic. 
-This allows the chatbot to remember users and personalize responses.
 
-- Stores `UserName`
-- Stores `FavouriteTopic`
-- Enables simple memory-based personalization
+This class stores user-related information during conversations.
 
+Responsibilities:
 
- Services
+* Stores UserName
+* Stores FavouriteTopic
+* Enables memory-based personalization
+* Allows the chatbot to remember user preferences
 
-KeywordHandler.cs
-This class is responsible for detecting cybersecurity-related keywords in user input.
-It converts the user message to lowercase and checks for important terms such as password, phishing, scam, privacy, malware, hacking, and virus.
+ CyberTask.cs
 
-- Identifies main topic from user input
-- Returns a keyword string used for response generation
-- Acts as the classification system of the chatbot
+This model represents a cybersecurity-related task.
 
+Responsibilities:
 
+* Stores task ID
+* Stores task title
+* Stores task description
+* Stores reminder information
+* Stores completion status
+* Stores creation date
 
-ResponseManager.cs
-This class manages all chatbot responses. It stores a dictionary of cybersecurity topics and multiple responses for each topic. 
-It randomly selects a response to make conversations more dynamic.
+ QuizQuestion.cs
 
-- Stores predefined responses in a Dictionary
-- Provides `GetRandomResponse()` for topic replies
-- Provides `GetMoreInfo()` for extended explanations
-- Ensures varied and natural chatbot replies
+This class represents a cybersecurity quiz question.
 
+Responsibilities:
 
+* Stores question text
+* Stores answer options
+* Stores correct answer
+* Stores explanation
+* Supports quiz functionality
+
+Services
+
+ KeywordHandler.cs
+
+Responsible for identifying cybersecurity-related keywords from user input.
+
+Recognized Topics:
+
+* Passwords
+* Phishing
+* Scams
+* Privacy
+* Malware
+* Hacking
+* Viruses
+* Two-Factor Authentication (2FA)
+
+Responsibilities:
+
+* Detects cybersecurity keywords
+* Classifies user queries
+* Supports chatbot topic recognition
+
+ ResponseManager.cs
+
+Manages chatbot responses and cybersecurity knowledge.
+
+Responsibilities:
+
+* Stores cybersecurity responses in dictionaries
+* Provides random responses
+* Provides detailed follow-up information
+* Supports "Tell Me More" functionality
+* Generates dynamic chatbot replies
+
+Topics Included:
+
+* Password Security
+* Phishing
+* Scams
+* Privacy
+* Malware
+* Hacking
+* Viruses
+* Two-Factor Authentication (2FA)
 
  SentimentAnalyzer.cs
-This class analyses the emotional tone of the user's message. It detects emotions such as worried, angry, confused, curious, and happy. Based on the detected sentiment, it returns supportive or encouraging responses.
 
-- Detects user emotions from text
-- Provides emotional support responses
-- Improves user interaction experience
+Detects emotional tone within user messages.
 
+Supported Sentiments:
 
+* Worried
+* Scared
+* Afraid
+* Frustrated
+* Angry
+* Upset
+* Curious
+* Interested
+* Confused
+* Happy
+* Excited
+
+Responsibilities:
+
+* Detects user emotions
+* Provides supportive responses
+* Improves user engagement
 
  VoiceManager.cs
-This class handles audio playback for the chatbot. It plays a WAV file (welcome message) using the SoundPlayer class.
 
-- Loads audio file from `Audio/welcome.wav`
-- Plays welcome sound on startup or response
-- Enhances user experience with sound feedback
+Handles audio playback functionality.
+
+Responsibilities:
+
+* Loads welcome audio
+* Plays WAV sound files
+* Enhances user experience
+
+Technologies:
+
+* System.Media.SoundPlayer
 
  DelegateHandler.cs
-This class demonstrates the use of delegates in C#. It allows methods to be passed and executed dynamically, improving flexibility and modular design.
 
-- Defines `BotResponseDelegate`
-- Executes assigned response methods dynamically
-- Demonstrates event-driven programming concept
+Demonstrates the use of delegates in C#.
+
+Responsibilities:
+
+* Defines BotResponseDelegate
+* Executes methods dynamically
+* Demonstrates event-driven programming
+
+ NLPIntentManager.cs
+
+Provides Natural Language Processing (NLP) capabilities.
+
+Recognizes:
+
+* Task requests
+* Reminder requests
+* Quiz requests
+* Activity log requests
+
+Examples:
+
+* "Add task update antivirus"
+* "Remind me to change my password"
+* "Start quiz"
+* "Show activity log"
+
+Responsibilities:
+
+* Detects user intent
+* Routes requests to appropriate services
+* Improves chatbot intelligence
+
+ ActivityLogger.cs
+
+Tracks user actions throughout the application.
+
+Responsibilities:
+
+* Records chatbot interactions
+* Records task actions
+* Records quiz activity
+* Maintains activity history
+
+Functions:
+
+* Log()
+* GetRecentLog()
+* GetFullLog()
+* GetCount()
+ TaskManager.cs
+
+Manages cybersecurity tasks.
+
+Responsibilities:
+
+* Create tasks
+* Retrieve tasks
+* Mark tasks as complete
+* Delete tasks
+* Log task actions
+
+ TaskStorageHelper.cs
+
+Handles task persistence using JSON files.
+
+Responsibilities:
+
+* Save tasks to tasks.json
+* Load tasks from tasks.json
+* Update tasks
+* Delete tasks
+* Maintain task history between sessions
+
+Technologies:
+
+* Newtonsoft.Json
+* File I/O Operations
+
+ QuizManager.cs
+
+Manages the cybersecurity quiz system.
+
+Responsibilities:
+
+* Loads quiz questions
+* Tracks scores
+* Validates answers
+* Provides feedback
+* Displays final results
+
+Features:
+
+* Multiple-choice questions
+* True/False questions
+* Explanations for answers
+* Final performance evaluation
 
  Main Application
 
- MainWindow.xaml & MainWindow.xaml.cs
-This is the core of the application where the user interface and chatbot logic are combined.
+ MainWindow.xaml
 
- MainWindow.xaml (UI)
-- Chat display area
-- User input textbox
-- Send, Clear, and Exit buttons
-- Image display for visual design
+Provides the graphical user interface.
 
-MainWindow.xaml.cs (Logic)
-- Controls chatbot flow and interaction
-- Connects all services together
-- Handles user input and bot responses
-- Manages:
-  - Keyword detection
-  - Sentiment analysis
-  - Memory system
-  - Voice playback
-  - Conversation flow
+Features:
+
+* Chatbot tab
+* Task Assistant tab
+* Quiz tab
+* Activity Log tab
+* Image display
+* User input controls
+* Send, Clear, and Exit buttons
+
+ MainWindow.xaml.cs
+
+Acts as the controller of the application.
+
+Responsibilities:
+
+* Handles chatbot conversation flow
+* Processes user input
+* Integrates all services
+* Manages memory
+* Controls task management
+* Controls quiz functionality
+* Controls activity logging
+* Handles NLP processing
+* Updates the graphical interface
+
+
+
+ Part 3 Features Implemented
+
+ User Memory
+
+The chatbot remembers:
+
+* User name
+* Favourite cybersecurity topic
+
+Example:
+
+User: My name is Zekhaya
+
+Chatbot: Nice to meet you, Zekhaya!
+
+Natural Language Processing (NLP)
+
+The chatbot understands user intent.
+
+Examples:
+
+* Add task Enable 2FA
+* Remind me to update antivirus
+* Start quiz
+* Show activity log
+
+ Task Assistant
+
+Users can:
+
+* Add tasks
+* Complete tasks
+* Delete tasks
+* Store reminders
+
+All tasks are saved using JSON persistence.
+
+ Cybersecurity Quiz
+
+Includes:
+
+* Multiple-choice questions
+* True/False questions
+* Instant feedback
+* Score tracking
+* Final performance message
+
+ Activity Logging
+
+Records:
+
+* User actions
+* Task actions
+* Quiz activities
+* Chatbot interactions
+
+JSON Persistence
+
+Tasks are stored permanently in:
+
+tasks.json
+
+This ensures data remains available after restarting the application.
 
  How the System Works
 
-1. User types a message
-2. MainWindow processes input
-3. KeywordHandler detects topic
-4. ResponseManager generates response
-5. SentimentAnalyzer checks emotion
-6. VoiceManager plays audio
-7. Chat updates on screen
+1. User enters a message.
+2. MainWindow processes the message.
+3. NLPIntentManager checks for intent.
+4. KeywordHandler identifies cybersecurity topics.
+5. SentimentAnalyzer checks emotional tone.
+6. ResponseManager generates a response.
+7. ActivityLogger records the action.
+8. VoiceManager plays audio feedback.
+9. Chat updates on screen.
+
 
  Technologies Used
 
-- C# (.NET WPF)
-- XAML UI Design
-- Object-Oriented Programming (OOP)
-- Delegates
-- Dictionary and List Collections
-- System.Media (Audio Playback)
+* C#
+* WPF (.NET)
+* XAML
+* Object-Oriented Programming (OOP)
+* Delegates
+* Dictionaries
+* Lists
+* JSON Serialization
+* Newtonsoft.Json
+* File I/O
+* System.Media.SoundPlayer
 
- 
+
 
  Summary
 
-This project demonstrates modular software design, chatbot development, user interaction handling, sentiment analysis, and multimedia integration using C# and WPF.
-Each class is designed with a single responsibility to ensure clean, maintainable, and scalable code.
+The Cybersecurity Awareness Chatbot Part 3 demonstrates advanced C# and WPF development concepts including Natural Language Processing, user memory, task management, activity logging, quiz systems, JSON persistence, sentiment analysis, delegates, and modular software architecture.
+
+The project provides an interactive educational platform that helps users learn cybersecurity concepts while showcasing object-oriented programming principles, clean code practices, and modern desktop application development techniques.
+
