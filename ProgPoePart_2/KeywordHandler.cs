@@ -27,6 +27,11 @@
             if (lowerMessage.Contains("virus"))
                 return "virus";
 
+            if (lowerMessage.Contains("2fa") ||
+                lowerMessage.Contains("two factor authentication") ||
+                lowerMessage.Contains("two-factor authentication"))
+                return "2fa";
+
             return "";
         }
     }

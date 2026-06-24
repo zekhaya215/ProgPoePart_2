@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AssemblyInfo.cs" />
+    <Compile Remove="DelegateHandler.cs" />
+    <Compile Remove="ResponseManager.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="suttlemedia-cyborg-8147987_1920 - Copy.jpg" />
   </ItemGroup>
 
@@ -16,6 +22,18 @@
     <Content Include="Audio\Greeting.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ResponseManager.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="AssemblyInfo.cs" />
+    <None Include="DelegateHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,7 +11,7 @@
         {
             responseDelegate = botDelegate;
         }
-        
+
         public string Execute(string topic)
         {
             return responseDelegate(topic);
